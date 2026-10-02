@@ -1,90 +1,135 @@
-import { FormEvent, useState } from 'react';
-import { ArrowRight, Globe, Instagram, Twitter } from 'lucide-react';
-import Nav from './Nav';
-import VideoBackground from './VideoBackground';
+const accolades = [
+  { icon: '/assets/hero-chip-fellow.svg', label: 'Senior Fellow, Oxford Historical Society' },
+  { icon: '/assets/hero-chip-author.svg', label: 'Author of 5 Bestselling Volumes' },
+  { icon: '/assets/hero-chip-speaker.svg', label: 'International Keynote Speaker' },
+];
 
-const socials = [
-  { label: 'Instagram', Icon: Instagram },
-  { label: 'Twitter', Icon: Twitter },
-  { label: 'Website', Icon: Globe },
+const stats = [
+  { value: '35+', label: 'Years in Academia' },
+  { value: '12', label: 'Global Bestsellers', accent: true },
+  { value: '2.4M', label: 'Audience & Listeners' },
+  { value: '80+', label: 'Keynote Addresses', accent: true },
 ];
 
 export default function Hero() {
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    setSubscribed(true);
-    setEmail('');
-  };
-
   return (
-    <header id="top" className="relative min-h-screen bg-black overflow-hidden flex flex-col">
-      <VideoBackground />
+    <section
+      id="top"
+      className="relative overflow-hidden bg-gradient-to-b from-amber-50/50 via-mist to-stone-50 py-12"
+    >
+      <img
+        src="/assets/watermark.png"
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute -right-20 -top-12 size-[560px] opacity-5 grayscale"
+      />
 
-      <Nav />
+      <div className="container-page relative flex flex-col gap-12">
+        <div className="grid items-center gap-10 lg:grid-cols-12">
+          <div className="flex flex-col items-start gap-4 lg:col-span-7">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="eyebrow inline-flex items-center gap-1.5 rounded-full border border-ink/20 bg-amber-500 px-[13px] py-[5px]">
+                <span className="size-2 rounded-full bg-ink" />
+                Distinguished Creator &amp; Chair
+              </span>
+              <span className="text-lg font-extrabold leading-7 text-amber-500">•</span>
+              <span className="text-xs font-bold uppercase leading-[17.6px] tracking-[0.6px] text-zinc-600">
+                Oxford &amp; Cambridge Fellow
+              </span>
+            </div>
 
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 py-12 text-center -translate-y-[20%]">
-        <h1
-          className="text-5xl md:text-6xl lg:text-7xl text-white mb-8 tracking-tight whitespace-nowrap"
-          style={{ fontFamily: "'Instrument Serif', serif" }}
-        >
-          Built for the curious
-        </h1>
+            <div className="flex flex-col gap-1">
+              <h1 className="font-display text-[40px] font-extrabold leading-[48px] tracking-[-1.4px] text-ink sm:text-[56px] sm:leading-[64px]">
+                Dr. Germien
+                <br />
+                <span className="text-amber-500 underline decoration-ink/30 decoration-4 [text-decoration-skip-ink:none] [text-underline-position:from-font]">
+                  Amer
+                </span>
+              </h1>
+              <p className="font-display text-xl font-semibold leading-[27.2px] text-zinc-600">
+                Historian, Author &amp; Top Thought Leader on Influencers Planet
+              </p>
+            </div>
 
-        <div className="max-w-xl w-full space-y-4">
-          <form
-            onSubmit={handleSubmit}
-            className="liquid-glass rounded-full pl-6 pr-2 py-2 flex items-center gap-3"
-          >
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              aria-label="Email address"
-              className="flex-1 min-w-0 bg-transparent outline-none text-white placeholder:text-white/40 text-base"
-            />
-            <button
-              type="submit"
-              aria-label="Subscribe"
-              className="bg-white rounded-full p-3 text-black"
-            >
-              <ArrowRight size={20} />
-            </button>
-          </form>
+            <p className="max-w-[672px] text-lg leading-[29.25px]">
+              Bridging classical political economy, diplomatic history, and contemporary geopolitics
+              for over three decades through high-impact media treatises, international symposiums,
+              and public statecraft counsel.
+            </p>
 
-          <p className="text-white text-sm leading-relaxed px-4" role="status">
-            {subscribed
-              ? 'You are on the list. Thanks for subscribing!'
-              : 'Stay updated with the latest news and insights. Subscribe to our newsletter today and never miss out on exciting updates.'}
-          </p>
+            <ul className="flex flex-wrap gap-2 py-1">
+              {accolades.map((item) => (
+                <li
+                  key={item.label}
+                  className="flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-[13px] py-[7px] text-xs font-bold leading-[17.6px] tracking-[0.72px] text-ink"
+                >
+                  <img src={item.icon} alt="" />
+                  {item.label}
+                </li>
+              ))}
+            </ul>
 
-          <div className="flex justify-center">
-            <a
-              href="#mission"
-              className="liquid-glass rounded-full px-8 py-3 text-white text-sm font-medium hover:bg-white/5 transition-colors"
-            >
-              Manifesto
-            </a>
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <a
+                href="#products"
+                className="btn-label press inline-flex items-center gap-1 rounded-full border-2 border-ink bg-amber-500 px-[30px] py-4 shadow-ink-3"
+              >
+                Explore Publications &amp; Books
+                <img src="/assets/hero-arrow.svg" alt="" />
+              </a>
+              <a
+                href="#lectures"
+                className="press inline-flex items-center gap-1 rounded-full border-2 border-ink bg-white px-[26px] py-4 text-sm font-bold uppercase leading-5 tracking-[0.7px] text-ink"
+              >
+                <img src="/assets/hero-play.svg" alt="" />
+                Listen to Latest Lecture
+              </a>
+            </div>
+          </div>
+
+          <div className="flex justify-center lg:col-span-5 lg:justify-end">
+            <div className="relative w-full max-w-[448px]">
+              <div className="absolute -left-3 -top-3 bottom-3 right-3 rounded-3xl border-2 border-amber-500 bg-amber-500/30" />
+              <figure className="relative flex flex-col gap-3 rounded-3xl border-2 border-ink bg-white p-3.5 shadow-ink-6">
+                <div className="relative overflow-hidden rounded-2xl border border-zinc-200">
+                  <img
+                    src="/assets/portrait.jpg"
+                    alt="Dr. Germien Amer in a private study"
+                    className="aspect-square w-full object-cover"
+                  />
+                  <div className="absolute bottom-3 right-3 flex size-16 items-center justify-center rounded-2xl border-2 border-amber-500 bg-white/95 p-1.5 shadow-md backdrop-blur-[2px]">
+                    <img src="/assets/crest.jpg" alt="Influencers Planet" className="size-full object-cover" />
+                  </div>
+                </div>
+                <figcaption className="flex flex-col items-center gap-[5.5px] rounded-2xl border border-amber-500/30 bg-amber-50/60 px-[13px] pb-[15.91px] pt-[13px] text-center">
+                  <span className="font-display text-xl font-extrabold leading-[27.2px] text-ink">
+                    Dr. Germien Amer
+                  </span>
+                  <span className="text-xs font-bold uppercase leading-[17.6px] tracking-[0.6px] text-zinc-600">
+                    Chair of Modern Diplomatic Studies
+                  </span>
+                </figcaption>
+              </figure>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="relative z-10 flex justify-center gap-4 pb-12">
-        {socials.map(({ label, Icon }) => (
-          <button
-            key={label}
-            aria-label={label}
-            className="liquid-glass rounded-full p-4 text-white/80 hover:text-white hover:bg-white/5 transition-all"
-          >
-            <Icon size={20} />
-          </button>
-        ))}
+        <dl className="grid grid-cols-2 gap-y-6 rounded-3xl border-2 border-ink bg-white p-[18px] shadow-amber-4 md:grid-cols-4">
+          {stats.map((stat, index) => (
+            <div
+              key={stat.label}
+              className={`flex flex-col-reverse items-center gap-[5.5px] pb-[2.91px] text-center ${
+                index > 0 ? 'md:border-l md:border-zinc-200' : ''
+              } ${index % 2 === 1 ? 'border-l border-zinc-200' : ''}`}
+            >
+              <dt className="text-xs font-bold uppercase leading-[17.6px] tracking-[0.6px] text-zinc-600">
+                {stat.label}
+              </dt>
+              <dd className={`h3 ${stat.accent ? '!text-amber-500' : ''}`}>{stat.value}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
-    </header>
+    </section>
   );
 }

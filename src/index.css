@@ -1,49 +1,68 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+@import '@fontsource-variable/syne/wght.css';
+@import '@fontsource-variable/plus-jakarta-sans/wght.css';
+@import '@fontsource-variable/plus-jakarta-sans/wght-italic.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-stone-50 font-sans text-zinc-600 antialiased;
+  }
+
+  /* Keeps anchored sections clear of the sticky header. */
+  section[id],
+  header[id] {
+    scroll-margin-top: 82px;
+  }
+
+  /* Figma SVG exports carry their own root width/height; never squash them. */
+  img[src$='.svg'] {
+    @apply max-w-none shrink-0;
+  }
 }
 
-body {
-  background: #000;
-  color: #fff;
-}
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-16;
+  }
 
-.liquid-glass {
-  background: rgba(255, 255, 255, 0.01);
-  background-blend-mode: luminosity;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border: none;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
-  position: relative;
-  overflow: hidden;
-}
+  .eyebrow {
+    @apply font-sans text-xs font-extrabold uppercase leading-[17.6px] tracking-[0.6px] text-ink;
+  }
 
-.liquid-glass::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1.4px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.45) 0%,
-    rgba(255, 255, 255, 0.15) 20%,
-    rgba(255, 255, 255, 0) 40%,
-    rgba(255, 255, 255, 0) 60%,
-    rgba(255, 255, 255, 0.15) 80%,
-    rgba(255, 255, 255, 0.45) 100%
-  );
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  pointer-events: none;
+  .pill {
+    @apply inline-flex items-center rounded-full px-3 py-1;
+  }
+
+  .h2 {
+    @apply font-display text-[30px] font-extrabold leading-[38px] tracking-[-1px] text-ink sm:text-[40px] sm:leading-[48px];
+  }
+
+  .h3 {
+    @apply font-display text-[26.4px] font-extrabold leading-[33.6px] tracking-[-0.396px] text-ink;
+  }
+
+  .lede {
+    @apply text-base leading-[26.4px] text-zinc-600;
+  }
+
+  .btn-label {
+    @apply font-sans text-sm font-extrabold uppercase leading-5 tracking-[0.7px] text-ink;
+  }
+
+  .text-link {
+    @apply inline-flex items-center gap-1 transition-opacity hover:opacity-70;
+  }
+
+  .press {
+    @apply transition-transform hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
