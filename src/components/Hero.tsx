@@ -1,14 +1,14 @@
 const accolades = [
-  { icon: '/assets/hero-chip-fellow.svg', label: 'Senior Fellow, Oxford Historical Society' },
-  { icon: '/assets/hero-chip-author.svg', label: 'Author of 5 Bestselling Volumes' },
-  { icon: '/assets/hero-chip-speaker.svg', label: 'International Keynote Speaker' },
+  { icon: '/assets/hero-chip-fellow.svg', label: 'PhD in Mass Communication' },
+  { icon: '/assets/hero-chip-author.svg', label: 'Author of 7 Books on Influence' },
+  { icon: '/assets/hero-chip-speaker.svg', label: 'Podcast Host & Columnist' },
 ];
 
 const stats = [
-  { value: '35+', label: 'Years in Academia' },
-  { value: '12', label: 'Global Bestsellers', accent: true },
-  { value: '2.4M', label: 'Audience & Listeners' },
-  { value: '80+', label: 'Keynote Addresses', accent: true },
+  { value: '25+', label: 'Years in Media & Communication' },
+  { value: '7', label: 'Books in Arabic & English', accent: true },
+  { value: '100+', label: 'Specialized Articles' },
+  { value: '120+', label: 'Blogs & Weekly Vlogs', accent: true },
 ];
 
 export default function Hero() {
@@ -30,11 +30,11 @@ export default function Hero() {
             <div className="flex flex-wrap items-center gap-2">
               <span className="eyebrow inline-flex items-center gap-1.5 rounded-full border border-ink/20 bg-amber-500 px-[13px] py-[5px]">
                 <span className="size-2 rounded-full bg-ink" />
-                Distinguished Creator &amp; Chair
+                Founder, Influencers Planet
               </span>
               <span className="text-lg font-extrabold leading-7 text-amber-500">•</span>
               <span className="text-xs font-bold uppercase leading-[17.6px] tracking-[0.6px] text-zinc-600">
-                Oxford &amp; Cambridge Fellow
+                Head of Corporate Communication, The United Bank
               </span>
             </div>
 
@@ -47,14 +47,14 @@ export default function Hero() {
                 </span>
               </h1>
               <p className="font-display text-xl font-semibold leading-[27.2px] text-zinc-600">
-                Historian, Author &amp; Top Thought Leader on Influencers Planet
+                Media Leader, Author &amp; Researcher in Influencer Media
               </p>
             </div>
 
             <p className="max-w-[672px] text-lg leading-[29.25px]">
-              Bridging classical political economy, diplomatic history, and contemporary geopolitics
-              for over three decades through high-impact media treatises, international symposiums,
-              and public statecraft counsel.
+              For more than 25 years, she has shaped how institutions speak to the public. Today she
+              studies how influencers and content creators are rewriting that conversation, and what
+              responsibility comes with that power.
             </p>
 
             <ul className="flex flex-wrap gap-2 py-1">
@@ -74,7 +74,7 @@ export default function Hero() {
                 href="#products"
                 className="btn-label press inline-flex items-center gap-1 rounded-full border-2 border-ink bg-amber-500 px-[30px] py-4 shadow-ink-3"
               >
-                Explore Publications &amp; Books
+                Explore the Books
                 <img src="/assets/hero-arrow.svg" alt="" />
               </a>
               <a
@@ -82,7 +82,7 @@ export default function Hero() {
                 className="press inline-flex items-center gap-1 rounded-full border-2 border-ink bg-white px-[26px] py-4 text-sm font-bold uppercase leading-5 tracking-[0.7px] text-ink"
               >
                 <img src="/assets/hero-play.svg" alt="" />
-                Listen to Latest Lecture
+                Listen to the Podcast
               </a>
             </div>
           </div>
@@ -92,11 +92,15 @@ export default function Hero() {
               <div className="absolute -left-3 -top-3 bottom-3 right-3 rounded-3xl border-2 border-amber-500 bg-amber-500/30" />
               <figure className="relative flex flex-col gap-3 rounded-3xl border-2 border-ink bg-white p-3.5 shadow-ink-6">
                 <div className="relative overflow-hidden rounded-2xl border border-zinc-200">
-                  <img
-                    src="/assets/portrait.jpg"
-                    alt="Dr. Germien Amer in a private study"
-                    className="aspect-square w-full object-cover"
-                  />
+                  <div
+                    role="img"
+                    aria-label="Portrait placeholder for Dr. Germien Amer, media leader and founder of Influencers Planet"
+                    className="flex aspect-square w-full flex-col items-center justify-center bg-gradient-to-br from-amber-50 via-white to-amber-100 p-8 text-center"
+                  >
+                    <img src="/assets/logo.jpg" alt="" className="mb-5 size-24 rounded-3xl object-cover shadow-md" />
+                    <span className="font-display text-5xl font-extrabold text-ink">GA</span>
+                    <span className="mt-2 text-xs font-extrabold uppercase tracking-[0.12em] text-zinc-600">Approved portrait coming soon</span>
+                  </div>
                   <div className="absolute bottom-3 right-3 flex size-16 items-center justify-center rounded-2xl border-2 border-amber-500 bg-white/95 p-1.5 shadow-md backdrop-blur-[2px]">
                     <img src="/assets/crest.jpg" alt="Influencers Planet" className="size-full object-cover" />
                   </div>
@@ -106,7 +110,7 @@ export default function Hero() {
                     Dr. Germien Amer
                   </span>
                   <span className="text-xs font-bold uppercase leading-[17.6px] tracking-[0.6px] text-zinc-600">
-                    Chair of Modern Diplomatic Studies
+                    Head of Corporate &amp; Internal Communications, The United Bank
                   </span>
                 </figcaption>
               </figure>

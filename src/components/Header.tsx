@@ -6,9 +6,9 @@ const links = [
   { lines: ['Overview'], href: '#overview' },
   { lines: ['Mission &', 'Vision'], href: '#mission' },
   { lines: ['Portfolio'], href: '#portfolio' },
-  { lines: ['Books &', 'Products'], href: '#products' },
-  { lines: ['Podcasts &', 'Lectures'], href: '#lectures' },
-  { lines: ['Tips &', 'Wisdom'], href: '#tips' },
+  { lines: ['Books &', 'Initiatives'], href: '#products' },
+  { lines: ['Podcast &', 'Talks'], href: '#lectures' },
+  { lines: ['Insights'], href: '#tips' },
   { lines: ['News'], href: '#news' },
   { lines: ['Contact'], href: '#contact' },
 ];
@@ -98,11 +98,11 @@ export default function Header() {
             href="#contact"
             className="btn-label press hidden rounded-full border-2 border-ink bg-amber-500 px-[26px] py-3 text-center shadow-ink-2 md:block xl:hidden min-[1720px]:block"
           >
-            Schedule Lecture / Inquire
+            Invite Dr. Amer to Speak
           </a>
           <span className="hidden border-l-2 border-zinc-200 pl-1.5 sm:flex">
             <img
-              src="/assets/profile.jpg"
+              src="/assets/logo.jpg"
               alt="Dr. Germien Amer"
               className="size-9 rounded-full object-cover shadow-[0_0_0_2px_#f59e0b,0_1px_2px_0_rgba(0,0,0,0.05)]"
             />
