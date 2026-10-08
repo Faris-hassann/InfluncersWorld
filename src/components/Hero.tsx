@@ -1,14 +1,17 @@
+import { Mail } from 'lucide-react';
+
 const accolades = [
   { icon: '/assets/hero-chip-fellow.svg', label: 'PhD in Mass Communication' },
   { icon: '/assets/hero-chip-author.svg', label: 'Author of 7 Books on Influence' },
   { icon: '/assets/hero-chip-speaker.svg', label: 'Podcast Host & Columnist' },
+  { icon: null, label: 'Newsletter' },
 ];
 
 const stats = [
-  { value: '25+', label: 'Years in Media & Communication' },
-  { value: '7', label: 'Books in Arabic & English', accent: true },
-  { value: '100+', label: 'Specialized Articles' },
-  { value: '120+', label: 'Blogs & Weekly Vlogs', accent: true },
+  { value: '25+', label: 'Media & Communication' },
+  { value: '100+', label: 'Influence Economy', accent: true },
+  { value: '50+', label: 'AI & Green Communication' },
+  { value: '70+', label: 'Cyber Crime & Security', accent: true },
 ];
 
 export default function Hero() {
@@ -30,25 +33,18 @@ export default function Hero() {
             <div className="flex flex-wrap items-center gap-2">
               <span className="eyebrow inline-flex items-center gap-1.5 rounded-full border border-ink/20 bg-amber-500 px-[13px] py-[5px]">
                 <span className="size-2 rounded-full bg-ink" />
-                Founder, Influencers Planet
-              </span>
-              <span className="text-lg font-extrabold leading-7 text-amber-500">•</span>
-              <span className="text-xs font-bold uppercase leading-[17.6px] tracking-[0.6px] text-zinc-600">
-                Head of Corporate Communication, The United Bank
+                Influencers Planet
               </span>
             </div>
 
             <div className="flex flex-col gap-1">
-              <h1 className="font-display text-[40px] font-extrabold leading-[48px] tracking-[-1.4px] text-ink sm:text-[56px] sm:leading-[64px]">
-                Dr. Germien
+              <h1 className="font-display text-[32px] font-extrabold leading-[40px] min-[400px]:text-[40px] min-[400px]:leading-[48px] tracking-[-1.4px] text-ink sm:text-[56px] sm:leading-[64px]">
+                Influencer
                 <br />
                 <span className="text-amber-500 underline decoration-ink/30 decoration-4 [text-decoration-skip-ink:none] [text-underline-position:from-font]">
-                  Amer
+                  Communication
                 </span>
               </h1>
-              <p className="font-display text-xl font-semibold leading-[27.2px] text-zinc-600">
-                Media Leader, Author &amp; Researcher in Influencer Media
-              </p>
             </div>
 
             <p className="max-w-[672px] text-lg leading-[29.25px]">
@@ -63,7 +59,7 @@ export default function Hero() {
                   key={item.label}
                   className="flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-[13px] py-[7px] text-xs font-bold leading-[17.6px] tracking-[0.72px] text-ink"
                 >
-                  <img src={item.icon} alt="" />
+                  {item.icon ? <img src={item.icon} alt="" /> : <Mail size={13} strokeWidth={2.5} className="text-amber-500" aria-hidden />}
                   {item.label}
                 </li>
               ))}
@@ -94,7 +90,7 @@ export default function Hero() {
                 <div className="relative overflow-hidden rounded-2xl border border-zinc-200">
                   <div
                     role="img"
-                    aria-label="Portrait placeholder for Dr. Germien Amer, media leader and founder of Influencers Planet"
+                    aria-label="Dr. Germien Amer, media leader and founder of Influencers Planet"
                     className="flex aspect-square w-full flex-col items-center justify-center bg-gradient-to-br from-amber-50 via-white to-amber-100 p-8 text-center"
                   >
                     <img src="/assets/logo.jpg" alt="" className="mb-5 size-24 rounded-3xl object-cover shadow-md" />
@@ -110,7 +106,7 @@ export default function Hero() {
                     Dr. Germien Amer
                   </span>
                   <span className="text-xs font-bold uppercase leading-[17.6px] tracking-[0.6px] text-zinc-600">
-                    Head of Corporate &amp; Internal Communications, The United Bank
+                    Founder of Influencers Planet
                   </span>
                 </figcaption>
               </figure>

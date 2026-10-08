@@ -98,7 +98,7 @@ export default function Header() {
             href="#contact"
             className="btn-label press hidden rounded-full border-2 border-ink bg-amber-500 px-[26px] py-3 text-center shadow-ink-2 md:block xl:hidden min-[1720px]:block"
           >
-            Invite Dr. Amer to Speak
+            Contact Dr. Germien Amer
           </a>
           <span className="hidden border-l-2 border-zinc-200 pl-1.5 sm:flex">
             <img
