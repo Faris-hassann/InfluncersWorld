@@ -4,7 +4,8 @@ import { Menu, X } from 'lucide-react';
 // `lines` mirrors the stacked labels in the design's desktop nav.
 const links = [
   { lines: ['Overview'], href: '#overview' },
-  { lines: ['Mission &', 'Vision'], href: '#mission' },
+  { lines: ['Mission'], href: '#mission' },
+  { lines: ['Founder'], href: '#founder' },
   { lines: ['Portfolio'], href: '#portfolio' },
   { lines: ['Books &', 'Initiatives'], href: '#products' },
   { lines: ['Podcast &', 'Talks'], href: '#lectures' },
@@ -102,7 +103,7 @@ export default function Header() {
           </a>
           <span className="hidden border-l-2 border-zinc-200 pl-1.5 sm:flex">
             <img
-              src="/assets/logo.jpg"
+              src="/assets/germien-amer-portrait.jpg"
               alt="Dr. Germien Amer"
               className="size-9 rounded-full object-cover shadow-[0_0_0_2px_#f59e0b,0_1px_2px_0_rgba(0,0,0,0.05)]"
             />

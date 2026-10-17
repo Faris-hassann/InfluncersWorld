@@ -1,6 +1,15 @@
-const articles = [
-  { category: 'Eighth Book', date: 'October 6, 2026', title: 'Dr. Germien Amer Signs Her Eighth Book, “Influential Power Creator on Influencer Planet”', text: 'Signed with The Writer Operation, the book explores, for the first time, the professions behind digital influence, starting with public relations and mass communication.', action: 'Read the Announcement' },
-  { category: 'Academic Milestone', date: 'October 2026', title: 'Dr. Germien Amer Awarded a PhD in Mass Communication', text: 'Her doctorate from Lincoln University College, Malaysia, extends five years of research on influencer media and digital communication.', action: 'Read the Announcement' },
-  { category: 'New Book', date: '2026', title: "Cyber-crime's Theatre: A New Book on Digital Fraud and Online Safety", text: 'The latest title in the Influencers Planet series examines how online crime works and how readers can protect themselves.', action: 'Read More About the Book' },
-];
-export default function NewsBlogs() { return <section id="news" className="bg-stone-50 py-12"><div className="container-page flex flex-col gap-12"><div className="flex flex-col justify-between gap-6 md:flex-row md:items-end"><div className="flex max-w-[672px] flex-col items-start gap-1"><span className="eyebrow pill bg-amber-500/20">Columns &amp; Announcements</span><h2 className="h2">News, Columns &amp; Updates</h2><p className="lede">Opinion columns, book announcements and milestones.</p></div><a href="#contact" className="btn-label text-link">Read All Articles <img src="/assets/nw-arrow.svg" alt="" /></a></div><div className="grid gap-10 md:grid-cols-3">{articles.map((a) => <article key={a.title} className="flex flex-col rounded-3xl border-2 border-ink/15 bg-white p-[18px]"><div className="flex justify-between gap-2"><span className="eyebrow text-amber-600">{a.category}</span><time className="text-xs font-bold text-zinc-600">{a.date}</time></div><h3 className="pt-2 font-display text-xl font-extrabold leading-7 text-ink">{a.title}</h3><p className="pt-1 text-sm leading-[22.75px]">{a.text}</p><a href="#contact" className="eyebrow text-link mt-auto pt-6">{a.action} →</a></article>)}</div></div></section>; }
+import BilingualCopy from '../BilingualCopy';
+import { documents } from '../../content/documents';
+
+export default function NewsBlogs() {
+  return <section id="news" className="bg-stone-50 py-12"><div className="container-page flex flex-col gap-8">
+    <div><span className="eyebrow pill bg-amber-500/20">News &amp; Announcements</span><h2 className="h2 mt-2">The Next Chapter of Influencers Planet</h2></div>
+    <article className="overflow-hidden rounded-3xl border-2 border-ink bg-white shadow-ink-4">
+      <div className="grid items-center gap-6 bg-amber-50 lg:grid-cols-2">
+        <img src="/assets/germien-amer-book-signing.jpg" alt="Germien Amer at a desk with a publishing agreement and the Influencers Planet flag" width="1268" height="1241" loading="lazy" className="max-h-[560px] w-full object-cover object-center" />
+        <div className="flex flex-col items-start gap-4 p-6 sm:p-10"><span className="eyebrow pill bg-amber-500">Eighth Book · Publishing Agreement</span><time dateTime="2026-10-06" className="text-sm font-bold">Cairo · October 6, 2026</time><h3 className="h3">The Professions Behind Digital Influence</h3><p className="text-lg leading-8">Public relations and mass communication open a new exploration of the people, expertise and technologies that create influence.</p><a href="#book-announcement" className="btn-label press rounded-full border-2 border-ink bg-white px-6 py-3">Read the Full Announcement ↓</a></div>
+      </div>
+      <div id="book-announcement" className="scroll-mt-28 p-6 sm:p-10"><BilingualCopy english={documents.newsEn} arabic={documents.newsAr} englishTitle="Germien Amer Signs an Agreement for Her Eighth Book, “Influential Power Creator on Influencer Planet”" arabicTitle="چرمين عامر توقع عقد كتابها الثامن «صُنّاع النفوذ الإعلامي على كوكب المؤثرين»" skipEnglish={2} skipArabic={2} /></div>
+    </article>
+  </div></section>;
+}

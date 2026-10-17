@@ -11,6 +11,7 @@ import NewsBlogs from './components/sections/NewsBlogs';
 import Dispatch from './components/sections/Dispatch';
 import Contact from './components/sections/Contact';
 import FAQ from './components/sections/FAQ';
+import Founder from './components/sections/Founder';
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Hero />
         <Overview />
         <MissionVision />
+        <Founder />
         <Products />
         <Lectures />
         <Tips />

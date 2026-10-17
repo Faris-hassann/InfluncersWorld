@@ -1,12 +1,9 @@
-const cards = [
-  { number: '#1', eyebrow: 'What Drives the Work', title: 'Our Mission', text: 'To turn the fast-moving world of digital influence into clear, accessible knowledge, so audiences, creators and institutions can take part in it responsibly.', points: ['Research and evidence over hype and opinion', 'Ethical frameworks for creators, including child influencers', 'Knowledge in Arabic and English, including accessible editions in Braille'], badge: 'border-ink bg-amber-500 text-ink' },
-  { number: '#2', eyebrow: 'The Horizon', title: 'Our Vision', text: 'To understand the new language of influence before it becomes the language that shapes us.', points: ['A credible, transparent influencer ecosystem across the Arab region', 'Media literacy for every age group, from children to decision-makers', 'Communication that serves society, sustainability and human development'], badge: 'border-amber-500 bg-ink text-amber-500' },
-];
+import BilingualCopy from '../BilingualCopy';
+import { documents } from '../../content/documents';
+
 export default function MissionVision() {
-  return <section id="mission" className="bg-amber-50/30 py-12"><div className="container-page flex flex-col items-center gap-7">
-    <div className="flex max-w-[768px] flex-col items-center gap-1 text-center"><span className="eyebrow pill bg-amber-500">Guiding Principles</span><h2 className="h2">Mission, Vision &amp; Core Belief</h2><span className="h-1.5 w-16 rounded-full bg-amber-500" /></div>
-    <figure className="relative flex w-full flex-col items-center gap-2 overflow-hidden rounded-3xl border-2 border-ink bg-white px-6 py-12 text-center shadow-amber-6"><img src="/assets/mv-bubble.svg" alt="" className="absolute left-6 top-1" /><blockquote className="relative max-w-[896px] font-display text-xl font-bold leading-8 text-ink sm:text-2xl">“Media is a noble profession that enlightens minds and transforms lives.”</blockquote><figcaption className="relative eyebrow text-amber-500">— Dr. Germien Amer</figcaption></figure>
-    <div className="grid w-full gap-10 md:grid-cols-2">{cards.map((card) => <article key={card.title} className="flex flex-col gap-4 rounded-3xl border-2 border-ink bg-white p-[30px] shadow-ink-4"><div className="flex items-center gap-2"><span className={`flex h-12 w-[50px] items-center justify-center rounded-2xl border-2 font-display text-2xl font-extrabold ${card.badge}`}>{card.number}</span><div><p className="eyebrow text-zinc-600">{card.eyebrow}</p><h3 className="h3">{card.title}</h3></div></div><p className="text-base leading-[26px]">{card.text}</p><ul className="flex flex-col gap-1">{card.points.map((point) => <li key={point} className="flex items-start gap-1 text-sm font-medium leading-[23.2px] text-zinc-900"><img src="/assets/mv-check.svg" alt="" />{point}</li>)}</ul></article>)}</div>
-    <p className="text-sm font-bold text-ink">Her working motto: “Nothing is impossible.”</p>
+  return <section id="mission" className="bg-amber-50/40 py-12"><div className="container-page flex flex-col gap-8">
+    <span className="eyebrow pill self-start bg-amber-500">Meaningful, Credible &amp; Responsible Impact</span>
+    <div className="rounded-3xl border-2 border-ink bg-white p-6 shadow-amber-4 sm:p-10"><BilingualCopy english={documents.missionEn} arabic={documents.missionAr} englishTitle="Our Mission" arabicTitle="رسالتنا" skipEnglish={1} skipArabic={1} /></div>
   </div></section>;
 }

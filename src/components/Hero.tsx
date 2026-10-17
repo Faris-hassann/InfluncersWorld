@@ -8,10 +8,10 @@ const accolades = [
 ];
 
 const stats = [
-  { value: '25+', label: 'Media & Communication' },
-  { value: '100+', label: 'Influence Economy', accent: true },
-  { value: '50+', label: 'AI & Green Communication' },
-  { value: '70+', label: 'Cyber Crime & Security', accent: true },
+  { value: '25+', label: 'Years in Media & Communication' },
+  { value: '7', label: 'Published Books · Eighth Signed', accent: true },
+  { value: '100+', label: 'Articles on Digital Influence' },
+  { value: '120+', label: 'Awareness Posts', accent: true },
 ];
 
 export default function Hero() {
@@ -39,18 +39,18 @@ export default function Hero() {
 
             <div className="flex flex-col gap-1">
               <h1 className="font-display text-[32px] font-extrabold leading-[40px] min-[400px]:text-[40px] min-[400px]:leading-[48px] tracking-[-1.4px] text-ink sm:text-[56px] sm:leading-[64px]">
-                Influencer
+                Where Influence
                 <br />
                 <span className="text-amber-500 underline decoration-ink/30 decoration-4 [text-decoration-skip-ink:none] [text-underline-position:from-font]">
-                  Communication
+                  Becomes Power
                 </span>
               </h1>
             </div>
 
             <p className="max-w-[672px] text-lg leading-[29.25px]">
-              For more than 25 years, she has shaped how institutions speak to the public. Today she
-              studies how influencers and content creators are rewriting that conversation, and what
-              responsibility comes with that power.
+              Explore how digital influence is created, managed and measured. Influencers Planet
+              connects research, media and professional practice to understand the creator economy
+              and the responsibility that comes with influence.
             </p>
 
             <ul className="flex flex-wrap gap-2 py-1">
@@ -88,15 +88,7 @@ export default function Hero() {
               <div className="absolute -left-3 -top-3 bottom-3 right-3 rounded-3xl border-2 border-amber-500 bg-amber-500/30" />
               <figure className="relative flex flex-col gap-3 rounded-3xl border-2 border-ink bg-white p-3.5 shadow-ink-6">
                 <div className="relative overflow-hidden rounded-2xl border border-zinc-200">
-                  <div
-                    role="img"
-                    aria-label="Dr. Germien Amer, media leader and founder of Influencers Planet"
-                    className="flex aspect-square w-full flex-col items-center justify-center bg-gradient-to-br from-amber-50 via-white to-amber-100 p-8 text-center"
-                  >
-                    <img src="/assets/logo.jpg" alt="" className="mb-5 size-24 rounded-3xl object-cover shadow-md" />
-                    <span className="font-display text-5xl font-extrabold text-ink">GA</span>
-                    <span className="mt-2 text-xs font-extrabold uppercase tracking-[0.12em] text-zinc-600">Approved portrait coming soon</span>
-                  </div>
+                  <img src="/assets/germien-amer-portrait.jpg" alt="Dr. Germien Amer at the Cairo International Book Fair" width="780" height="984" className="aspect-[4/5] w-full object-cover" />
                   <div className="absolute bottom-3 right-3 flex size-16 items-center justify-center rounded-2xl border-2 border-amber-500 bg-white/95 p-1.5 shadow-md backdrop-blur-[2px]">
                     <img src="/assets/crest.jpg" alt="Influencers Planet" className="size-full object-cover" />
                   </div>

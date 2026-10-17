@@ -28,6 +28,21 @@
 }
 
 @layer components {
+  .editorial-copy[lang='ar'] {
+    font-family: Tahoma, Arial, sans-serif;
+  }
+
+  .editorial-copy[lang='ar'] .h2 {
+    font-family: inherit;
+    letter-spacing: 0;
+    line-height: 1.6;
+  }
+
+  button:focus-visible, a:focus-visible, summary:focus-visible {
+    outline: 3px solid #b45309;
+    outline-offset: 4px;
+  }
+
   .container-page {
     @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-16;
   }
