@@ -1,7 +1,144 @@
-const tips = [
-  { number: '#01', icon: '/assets/tp-1.svg', title: 'Check the Motive, Not Just the Message', text: 'Before you share a post, ask who gains if you believe it. Look for the source, the date, and any sign that it was paid for.', application: 'Media Literacy' },
-  { number: '#02', icon: '/assets/tp-2.svg', title: 'Disclose Every Paid Partnership', text: "Trust is a creator's only lasting asset. Label sponsored content clearly and early; audiences forgive ads, not concealment.", application: 'Creator Ethics' },
-  { number: '#03', icon: '/assets/tp-3.svg', title: "Protect a Child's Digital Footprint", text: "A child cannot consent to a public archive. Limit identifiable details, set screen-time boundaries and keep any income in the child's name.", application: 'Child Online Safety' },
-  { number: '#04', icon: '/assets/tp-4.svg', title: 'Treat Employees as Your First Audience', text: 'Every external message is tested inside first. Staff who understand the story become its most credible messengers.', application: 'Corporate Communication' },
+import { useEffect, useState } from 'react';
+import { api, type Tip, htmlToPlainText } from '../../lib/api';
+import { DirectImage } from '../../lib/images';
+
+const initialTips = [
+  {
+    number: '#01',
+    icon: '/assets/tp-1.svg',
+    title: 'Check the Motive, Not Just the Message',
+    text: 'Before you share a post, ask who gains if you believe it. Look for the source, the date, and any sign that it was paid for.',
+    application: 'Media Literacy',
+  },
+  {
+    number: '#02',
+    icon: '/assets/tp-2.svg',
+    title: 'Disclose Every Paid Partnership',
+    text: "Trust is a creator's only lasting asset. Label sponsored content clearly and early; audiences forgive ads, not concealment.",
+    application: 'Creator Ethics',
+  },
+  {
+    number: '#03',
+    icon: '/assets/tp-3.svg',
+    title: "Protect a Child's Digital Footprint",
+    text: "A child cannot consent to a public archive. Limit identifiable details, set screen-time boundaries and keep any income in the child's name.",
+    application: 'Child Online Safety',
+  },
+  {
+    number: '#04',
+    icon: '/assets/tp-4.svg',
+    title: 'Treat Employees as Your First Audience',
+    text: 'Every external message is tested inside first. Staff who understand the story become its most credible messengers.',
+    application: 'Corporate Communication',
+  },
 ];
-export default function Tips() { return <section id="tips" className="bg-stone-50 py-12"><div className="container-page flex flex-col gap-12"><div className="flex max-w-[768px] flex-col items-start gap-1"><span className="eyebrow pill bg-amber-500">Practical Guidance</span><h2 className="h2">Media-Literacy Toolkits for the Age of Influence</h2><p className="lede">Short, usable lessons drawn from 25 years inside institutions and five years studying the creator economy.</p></div><div className="grid gap-10 md:grid-cols-2">{tips.map((tip) => <article key={tip.number} className="flex flex-col items-start gap-2 rounded-3xl border-2 border-ink bg-white p-[30px] shadow-amber-4"><div className="flex w-full items-center justify-between"><span className="font-display text-3xl font-extrabold text-amber-500">{tip.number}</span><img src={tip.icon} alt="" /></div><h3 className="font-display text-xl font-extrabold text-ink">{tip.title}</h3><p className="text-base leading-[26px]">{tip.text}</p><span className="mt-auto rounded-full bg-amber-100 px-2.5 py-1 text-xs font-extrabold uppercase text-ink">{tip.application}</span></article>)}</div><div className="flex flex-col justify-between gap-6 rounded-3xl border-2 border-amber-500 bg-ink p-[30px] shadow-amber-6 lg:flex-row lg:items-center"><div className="flex items-center gap-4"><span className="flex size-16 shrink-0 items-center justify-center rounded-3xl bg-amber-500"><img src="/assets/tp-pdf.svg" alt="" /></span><div><p className="eyebrow text-amber-500">Free Resource</p><h3 className="font-display text-xl font-extrabold text-white">The Responsible Influence Guide (PDF)</h3><p className="text-sm leading-[23.2px] text-zinc-300">Includes the age-segmented code of conduct, a disclosure checklist for creators, and a parents&apos; guide to keeping child influencers safe.</p></div></div><a href="#contact" className="btn-label press shrink-0 rounded-full border-2 border-white bg-amber-500 px-[30px] py-4 text-center">Request the Free Guide</a></div></div></section>; }
+
+export default function Tips() {
+  const [tips, setTips] = useState<Tip[]>([]);
+
+  useEffect(() => {
+    let active = true;
+    api
+      .getTips()
+      .then((data) => {
+        if (active && data.length > 0) setTips(data);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const hasLiveTips = tips.length > 0;
+
+  return (
+    <section id="tips" className="bg-stone-50 py-12">
+      <div className="container-page flex flex-col gap-12">
+        <div className="flex max-w-[768px] flex-col items-start gap-1">
+          <span className="eyebrow pill bg-amber-500">Practical Guidance</span>
+          <h2 className="h2">Media-Literacy Toolkits for the Age of Influence</h2>
+          <p className="lede">
+            Short, usable lessons drawn from 25 years inside institutions and five years studying the
+            creator economy.
+          </p>
+        </div>
+
+        <div className="grid gap-10 md:grid-cols-2">
+          {hasLiveTips
+            ? tips.map((tip, idx) => {
+                const num = `#0${idx + 1}`;
+                return (
+                  <article
+                    key={tip.id}
+                    className="flex flex-col items-start gap-3 rounded-3xl border-2 border-ink bg-white p-[30px] shadow-amber-4"
+                  >
+                    <div className="flex w-full items-center justify-between">
+                      <span className="font-display text-3xl font-extrabold text-amber-500">{num}</span>
+                      {tip.imageUrl ? (
+                        <div className="size-12 overflow-hidden rounded-xl">
+                          <DirectImage src={tip.imageUrl} alt={tip.title} className="h-full w-full object-cover" />
+                        </div>
+                      ) : (
+                        <img src={`/assets/tp-${(idx % 4) + 1}.svg`} alt="" />
+                      )}
+                    </div>
+                    <h3 className="font-display text-xl font-extrabold text-ink">{tip.title}</h3>
+                    {tip.titleAr && (
+                      <p className="text-sm font-medium text-amber-700" dir="rtl">
+                        {tip.titleAr}
+                      </p>
+                    )}
+                    <p className="text-base leading-[26px] text-zinc-700">
+                      {htmlToPlainText(tip.description)}
+                    </p>
+                    <span className="mt-auto rounded-full bg-amber-100 px-2.5 py-1 text-xs font-extrabold uppercase text-ink">
+                      Practical Insight
+                    </span>
+                  </article>
+                );
+              })
+            : initialTips.map((tip) => (
+                <article
+                  key={tip.number}
+                  className="flex flex-col items-start gap-2 rounded-3xl border-2 border-ink bg-white p-[30px] shadow-amber-4"
+                >
+                  <div className="flex w-full items-center justify-between">
+                    <span className="font-display text-3xl font-extrabold text-amber-500">{tip.number}</span>
+                    <img src={tip.icon} alt="" />
+                  </div>
+                  <h3 className="font-display text-xl font-extrabold text-ink">{tip.title}</h3>
+                  <p className="text-base leading-[26px]">{tip.text}</p>
+                  <span className="mt-auto rounded-full bg-amber-100 px-2.5 py-1 text-xs font-extrabold uppercase text-ink">
+                    {tip.application}
+                  </span>
+                </article>
+              ))}
+        </div>
+
+        <div className="flex flex-col justify-between gap-6 rounded-3xl border-2 border-amber-500 bg-ink p-[30px] shadow-amber-6 lg:flex-row lg:items-center">
+          <div className="flex items-center gap-4">
+            <span className="flex size-16 shrink-0 items-center justify-center rounded-3xl bg-amber-500">
+              <img src="/assets/tp-pdf.svg" alt="" />
+            </span>
+            <div>
+              <p className="eyebrow text-amber-500">Free Resource</p>
+              <h3 className="font-display text-xl font-extrabold text-white">
+                The Responsible Influence Guide (PDF)
+              </h3>
+              <p className="text-sm leading-[23.2px] text-zinc-300">
+                Includes the age-segmented code of conduct, a disclosure checklist for creators, and a
+                parents&apos; guide to keeping child influencers safe.
+              </p>
+            </div>
+          </div>
+          <a
+            href="#contact"
+            className="btn-label press shrink-0 rounded-full border-2 border-white bg-amber-500 px-[30px] py-4 text-center"
+          >
+            Request the Free Guide
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
