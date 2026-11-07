@@ -213,13 +213,22 @@ export default function NewsBlogs() {
                         key={cat.id}
                         type="button"
                         onClick={() => setSelectedCategory(cat.id)}
-                        className={`rounded-full border px-4 py-1.5 text-xs font-bold transition-colors ${
+                        className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-xs font-bold transition-colors ${
                           selectedCategory === cat.id
                             ? 'border-ink bg-amber-500 text-ink'
                             : 'border-zinc-300 bg-white text-zinc-600 hover:border-amber-500'
                         }`}
                       >
-                        {cat.nameEn} {cat.nameAr ? `/ ${cat.nameAr}` : ''} ({count})
+                        {cat.imageUrl && (
+                          <img
+                            src={cat.imageUrl}
+                            alt=""
+                            className="size-4 shrink-0 rounded-full object-cover"
+                            onError={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; }}
+                          />
+                        )}
+                        <span>{cat.nameEn} {cat.nameAr ? `/ ${cat.nameAr}` : ''}</span>
+                        <span className="opacity-75">({count})</span>
                       </button>
                     );
                   })}
@@ -236,10 +245,10 @@ export default function NewsBlogs() {
                     key={art.id}
                     className="flex flex-col overflow-hidden rounded-3xl border-2 border-ink bg-white shadow-ink-4"
                   >
-                    {primaryImage ? (
+                    {primaryImage || art.articleCategory?.imageUrl ? (
                       <div className="group relative h-56 w-full overflow-hidden bg-stone-900">
                         <DirectImage
-                          src={primaryImage}
+                          src={primaryImage || art.articleCategory?.imageUrl || ''}
                           alt={art.titleEn}
                           fallbackSrc="/assets/germien-amer-book-signing.jpg"
                           className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"

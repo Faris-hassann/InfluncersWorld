@@ -24,8 +24,7 @@ export interface ArticleCategory {
   id: number;
   nameEn: string;
   nameAr: string;
-  descriptionEn?: string;
-  descriptionAr?: string;
+  imageUrl?: string;
   createdOn?: string;
 }
 
